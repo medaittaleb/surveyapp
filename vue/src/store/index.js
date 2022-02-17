@@ -6,7 +6,7 @@ const store = createStore({
     state: {
         user:{
             data:{},
-            token: null
+            token: sessionStorage.getItem('TOKEN'),
         }
     },
     getters: {},
@@ -28,9 +28,14 @@ const store = createStore({
         }
     },
     mutations: {
-        logout: state => {
+        logout: (state) => {
             state.user.data = {};
             state.user.token = null
+        },
+        setUser: (state,userData) => {
+            state.user.data = userData.user;
+            state.user.token = userData.token;
+            sessionStorage.setItem('TOKEN', userData.token);
         }
     },
     modules: {}    

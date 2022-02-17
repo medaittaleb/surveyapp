@@ -66,7 +66,7 @@ function register(ev) {
 
   store
       .dispatch('register',user)
-      .then(() => {
+      .then((res) => {
         router.push({
           name: 'Dashboard'
         })
