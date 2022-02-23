@@ -25,10 +25,17 @@ const store = createStore({
                     commit('setUser', data);
                     return data;
                 })
+        },
+        logout({ commit }){
+            return axiosClient.post('/logout')
+                .then( res  => {
+                    commit('uLogout');
+                    return res;
+                })
         }
     },
     mutations: {
-        logout: (state) => {
+        uLogout: (state) => {
             state.user.data = {};
             state.user.token = null
         },
